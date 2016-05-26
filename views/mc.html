@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  Music
+{% endblock %}
+
+{% block head %}
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/music.css">
+{% endblock %}
+
+{% block content %}
+  <header>
+  	<h1>{[ title ]}</h1>
+    <ul id="canvas-style">
+      <li data-type="col" class="selected">柱状</li><li data-type="doc">圆点</li>
+    </ul>
+  	<p id="volume">Volume&nbsp;<input type="range"  max="100" min="0" value="100"></p>
+    <button id="loop" class="off"></button>
+    <button id="play-stop" class="stop"></button>
+  </header>
+  <div class="left">
+  	<ul id="music-list">
+  	  {% for name in music %}
+  	  <li title='{[ name ]}'>{[ name ]}</li>
+  	  {% endfor %}
+  	</ul>
+  </div>
+  <div class="right" id="box">
+    <canvas id="can">
+    </canvas>
+  </div>
+  <script src="/javascripts/music.js"></script>
+{% endblock %}
